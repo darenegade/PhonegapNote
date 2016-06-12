@@ -121,6 +121,25 @@ $$('.perf-start').on('click', function () {
         }
     } while (swapped);
 
+    for(var z = 0; z < count; z++) {
+        todoData.push({
+            title: "PerfTest",
+            color: "orange",
+            lat: 0,
+            long: 0,
+            checked: '',
+            id: (new Date()).getTime()
+        });
+    }
+    var index;
+    for (var x = 0; x < todoData.length; x++) {
+        (todoData[x].title === "PerfTest") ? index = i : index = -1;
+        if (index !== -1 && typeof(index) !== 'undefined') {
+            todoData.splice(index, 1);
+            localStorage.td7Data = JSON.stringify(todoData);
+        }
+    }
+
     alert("Done for "+count+" Elements after: " + (new Date().getTime() - start) + "ms");
 });
 
