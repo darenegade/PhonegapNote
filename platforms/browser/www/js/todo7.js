@@ -14,6 +14,34 @@ var mainView = myApp.addView('.view-main', {
 
 var todoData = localStorage.td7Data ? JSON.parse(localStorage.td7Data) : [];
 
+$$('.perf-start').on('click', function () {
+
+    var count = 10000;
+
+    var start = new Date().getTime();
+
+    var a = [];
+
+    for(var y = 0; y < count; y++){
+        a.push(Math.random());
+    }
+
+    var swapped;
+    do {
+        swapped = false;
+        for (var i=0; i < a.length-1; i++) {
+            if (a[i] > a[i+1]) {
+                var temp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = temp;
+                swapped = true;
+            }
+        }
+    } while (swapped);
+
+    alert("Done for "+count+" Elements after: " + (new Date().getTime() - start) + "ms");
+});
+
 $$('.popup').on('open', function () {
     $$('body').addClass('with-popup');
 });
